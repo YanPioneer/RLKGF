@@ -1,7 +1,5 @@
 import sys
 
-sys.path.append('/home/shenrujia/yanlian/KGRM_RWR_And_GCN/')
-
 import argparse
 import ast
 import os
