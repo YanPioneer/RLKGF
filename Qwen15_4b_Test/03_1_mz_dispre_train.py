@@ -153,7 +153,7 @@ for i in [45 - 5 * j for j in range(9)]:
             # LLM
             # 加载模型
              # 加载模型和分词器
-            llm_path = "/mnt/disk1/hf_models/Qwen1.5-4B-Chat/"  # LLM 互信息及最后生成
+            llm_path = "/Qwen1.5-4B-Chat/"  # LLM 互信息及最后生成
 
             model = AutoModelForCausalLM.from_pretrained(
                 llm_path,
