@@ -156,7 +156,7 @@ for i in [240 - 20 * j for j in range(12)]:
         # LLM
         # 加载模型
         # 加载模型和分词器
-        llm_path = "/mnt/disk1/hf_models/Qwen25-3B-Chat/"  # LLM 互信息及最后生成
+        llm_path = "/Qwen25-3B-Chat/"  # LLM 互信息及最后生成
 
         model = AutoModelForCausalLM.from_pretrained(
             llm_path,
