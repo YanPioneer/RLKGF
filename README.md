@@ -38,6 +38,66 @@ Table2 shows the performance of different LLMs trained using only RLAIF and RLKG
 
 \textbf{iii. Explore more effective KG feedback methods.} Furthermore, by comparing the prediction accuracy of models using only the KG, KG feedback-trained models, GPT-4o-mini predictions, RLAIF, and SFT, we find that although trained LLMs show some performance improvement, they still fall far short of the optimal target. Therefore, further exploration is needed on how to fully utilize factual knowledge and construct reasonable feedback to guide model training.
 
+![img](https://github.com/YanPioneer/RLKGF/blob/main/image/image.png)
+
+
+| Backbone              | Method                   | GMD        | DXY        | MZ         | MED-D      |
+| --------------------- | ------------------------ | ---------- | ---------- | ---------- | ---------- |
+| GPT-4o-mini           | Base                     | 0.646      | 0.4262     | 0.5289     | 0.5345     |
+|                       | KG Prompt (Triple)       | 0.7569     | 0.7563     | 0.6275     | 0.6638     |
+|                       | KG Prompt (Text)         | 0.6731     | 0.5772     | 0.5669     | \-         |
+| Qwen2.5-3b-instruct   | Base                     | 0.6360     | 0.4531     | 0.3789     | 0.3553     |
+|                       | FT                       | **0.7552** | 0.4951     | 0.4253     | 0.4823     |
+|                       | LoRA                     | 0.7334     | 0.5038     | 0.4591     | **0.4843** |
+|                       | KG Prompt (Triple)       | 0.7054     | 0.6495     | **0.6648** | 0.4671     |
+|                       | KG Prompt (Text)         | 0.6452     | 0.5126     | 0.5768     | 0.4655     |
+|                       | RLKGF                    | 0.7113     | **0.7314** | 0.6268     | 0.3800     |
+|                       | RLKGF+KG Prompt (Triple) | 0.7490     | \-         | \-         | \-         |
+| qwen2.5-1.5b-instruct | Base                     | 0.4840     | 0.2359     | 0.1845     | 0.1982     |
+|                       | FT                       | 0.7066     | 0.438      | 0.4035     | **0.3863** |
+|                       | LoRA                     | 0.7041     | 0.3543     | 0.3929     | 0.3543     |
+|                       | KG Prompt (Triple)       | 0.6397     | 0.468      | 0.4352     | 0.3825     |
+|                       | KG Prompt (Text)         | 0.6188     | 0.5757     | 0.4803     | 0.3575     |
+|                       | RLKGF                    | 0.6109     | **0.5890** | **0.5070** | 0.3025     |
+|                       | RLKGF+KG Prompt (Triple) | **0.7113** | \-         | \-         | \-         |
+| qwen2.5-0.5b-instruct | Base                     | 0.2469     | 0.0981     | 0.0042     | 0.1273     |
+|                       | FT                       | **0.4920** | **0.3388** | 0.0760     | **0.2510** |
+|                       | LoRA                     | 0.4209     | 0.1252     | 0.0240     | 0.1860     |
+|                       | KG Prompt (Triple)       | 0.4490     | 0.1515     | 0.0556     | 0.1525     |
+|                       | KG Prompt (Text)         | 0.2870     | 0.1388     | 0.0373     | 0.1225     |
+|                       | RLKGF                    | 0.3278     | 0.2654     | **0.3239** | 0.1475     |
+|                       | RLKGF+KG Prompt (Triple) | 0.4519     | \-         | \-         | \-         |
+| qwen1.5-4b-chat       | Base                     | 0.4038     | 0.4000     | 0.4176     | 0.1893     |
+|                       | FT                       | 0.6866     | 0.6067     | 0.5260     | **0.3956** |
+|                       | LoRA                     | 0.6485     | 0.6048     | 0.5556     | 0.3080     |
+|                       | KG Prompt (Triple)       | 0.5540     | 0.4350     | 0.4754     | 0.1722     |
+|                       | KG Prompt (Text)         | 0.4820     | 0.5184     | 0.3507     | 0.2022     |
+|                       | RLKGF                    | 0.5914     | **0.6893** | **0.5986** | 0.2525     |
+|                       | RLKGF+KG Prompt (Triple) | **0.6987** | \-         | \-         | \-         |
+| qwen1.5-1.8b-chat     | Base                     | 0.3335     | 0.2291     | 0.0423     | 0.1342     |
+|                       | FT                       | 0.5656     | 0.3320     | 0.2408     | **0.3233** |
+|                       | LoRA                     | 0.5364     | 0.2864     | 0.1795     | 0.2600     |
+|                       | KG Prompt (Triple)       | 0.2970     | 0.2786     | 0.0894     | 0.0392     |
+|                       | KG Prompt (Text)         | 0.3326     | 0.2641     | 0.1188     | 0.1105     |
+|                       | RLKGF                    | 0.4784     | **0.3366** | **0.3592** | 0.2050     |
+|                       | RLKGF+KG Prompt (Triple) | **0.5690** | \-         | \-         | \-         |
+| InternLM2.5-1.8b-chat | Base                     | 0.2092     | 0.3981     | 0.4507     | 0.1850     |
+|                       | FT                       | **0.7573** | **0.7184** | **0.5985** | **0.4683** |
+|                       | LoRA                     | 0.5828     | 0.5563     | 0.5859     | 0.3916     |
+|                       | KG Prompt (Triple)       | 0.2594     | 0.4757     | 0.4648     | \-         |
+|                       | KG Prompt (Text)         | 0.3180     | 0.3204     | 0.3380     | 0.1800     |
+|                       | RLKGF                    | 0.5356     | 0.4757     | 0.5704     | 0.2025     |
+|                       | RLKGF+KG Prompt (Triple) | 0.6192     | \-         | \-         | \-         |
+| InternLM2-1.8b-chat   | Base                     | 0.3305     | 0.2718     | 0.2042     | 0.1667     |
+|                       | FT                       | **0.7280** | **0.7766** | **0.6760** | **0.4836** |
+|                       | LoRA                     | 0.7012     | 0.7116     | 0.6394     | 0.4080     |
+|                       | KG Prompt (Triple)       | 0.2971     | 0.3883     | 0.0634     | \-         |
+|                       | KG Prompt (Text)         | 0.3556     | 0.3204     | 0.0775     | 0.0875     |
+|                       | RLKGF                    | 0.4686     | 0.4272     | 0.5282     | 0.2300     |
+|                       | RLKGF+KG Prompt (Triple) | 0.4979     | \-         | \-         | \-         |
+
+Table 9.  Comparison of Different Knowledge Injection Methods.
+
 ### RLKGF demonstrates better generalization capability compared to SFT.
 We conduct an experiment to compare the generalization ability of RLKGF and SFT. Specifically, we use Qwen2.5-3B-Instruct as the base model, train it on the GMD dataset using both RLKGF and SFT, and evaluate the models on the DXY dataset. As shown in Table 4, the model trained with RLKGF demonstrates clear generalization to a different dataset, while the SFT-trained model even underperforms the untrained baseline, which highlights the superior generalization capability of RLKGF.
 | Backbone            | Method       | DXY    |
