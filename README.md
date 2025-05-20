@@ -106,6 +106,6 @@ We conduct an experiment to compare the generalization ability of RLKGF and SFT.
 |                     | RLKGF on GMD | 0.6117 |
 |                     | SFT on GMD   | 0.3680 |
 
-Table 4. Generalization comparison between RLKGF and SFT.Disease Probability (RWR)
+Table 4. Generalization comparison between RLKGF and SFT.
 
 
